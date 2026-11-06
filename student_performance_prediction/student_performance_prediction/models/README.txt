@@ -1,0 +1,1 @@
+Trained models are generated here upon running "python train_model.py".

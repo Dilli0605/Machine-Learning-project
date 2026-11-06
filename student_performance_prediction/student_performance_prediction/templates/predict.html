@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Predict Performance | Student Performance Prediction{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-8">
+            <div class="card border-0 shadow-sm rounded-4 p-4 p-md-5 bg-white">
+                <div class="d-flex align-items-center gap-3 mb-4 border-bottom pb-3">
+                    <div class="bg-primary text-white p-3 rounded-3 fs-3">
+                        <i class="bi bi-cpu"></i>
+                    </div>
+                    <div>
+                        <h3 class="fw-bold mb-0">Enter Academic Information</h3>
+                        <p class="text-muted small mb-0">The Random Forest Regression model evaluates these parameters to predict expected exam performance.</p>
+                    </div>
+                </div>
+
+                <form method="POST" action="{{ url_for('predict') }}" id="predictForm">
+                    <div class="row g-4">
+                        <!-- Attendance -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">
+                                <i class="bi bi-calendar-check text-primary"></i> Attendance Percentage (%)
+                            </label>
+                            <input type="number" step="0.1" min="0" max="100" name="attendance" class="form-control" placeholder="e.g. 85.5" value="85.0" required>
+                            <div class="form-text small">University minimum requirement is 75%.</div>
+                        </div>
+
+                        <!-- Previous Marks -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">
+                                <i class="bi bi-journal-text text-primary"></i> Previous Semester Marks (%)
+                            </label>
+                            <input type="number" step="0.1" min="0" max="100" name="previous_marks" class="form-control" placeholder="e.g. 78.0" value="78.0" required>
+                            <div class="form-text small">Overall aggregate from previous exam.</div>
+                        </div>
+
+                        <!-- Internal Marks -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">
+                                <i class="bi bi-clipboard-data text-primary"></i> Internal Assessment Marks (%)
+                            </label>
+                            <input type="number" step="0.1" min="0" max="100" name="internal_marks" class="form-control" placeholder="e.g. 82.0" value="80.0" required>
+                            <div class="form-text small">Continuous evaluation / unit test scores.</div>
+                        </div>
+
+                        <!-- Study Hours -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">
+                                <i class="bi bi-clock-history text-primary"></i> Daily Study Hours (hrs/day)
+                            </label>
+                            <input type="number" step="0.1" min="0" max="16" name="study_hours" class="form-control" placeholder="e.g. 3.5" value="3.5" required>
+                            <div class="form-text small">Hours dedicated to self-study outside lectures.</div>
+                        </div>
+
+                        <!-- Assignment Score -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">
+                                <i class="bi bi-check2-square text-primary"></i> Assignment Completion Score (%)
+                            </label>
+                            <input type="number" step="0.1" min="0" max="100" name="assignment_score" class="form-control" placeholder="e.g. 90.0" value="88.0" required>
+                            <div class="form-text small">Timeliness and quality of assignments submitted.</div>
+                        </div>
+
+                        <!-- Absences -->
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">
+                                <i class="bi bi-exclamation-triangle text-danger"></i> Number of Previous Absences
+                            </label>
+                            <input type="number" min="0" max="50" name="absences" class="form-control" placeholder="e.g. 4" value="4" required>
+                            <div class="form-text small">Total days absent during the term.</div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex justify-content-end gap-3 mt-4 pt-3 border-top">
+                        <a href="{{ url_for('student_dashboard') }}" class="btn btn-outline-secondary">Cancel</a>
+                        <button type="submit" class="btn btn-primary px-4 fw-semibold shadow-sm">
+                            <i class="bi bi-magic"></i> Generate Prediction
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

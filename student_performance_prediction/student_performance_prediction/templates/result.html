@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% block title %}Prediction Result | Student Performance{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-lg-9">
+            <!-- Header card -->
+            <div class="card border-0 shadow-sm rounded-4 overflow-hidden mb-4 bg-white">
+                <div class="bg-primary text-white p-4 p-md-5 text-center position-relative">
+                    <span class="badge bg-white text-primary mb-2 px-3 py-1 fw-bold">Machine Learning Prediction Output</span>
+                    <h2 class="display-4 fw-bold mb-1">{{ predicted_marks }}%</h2>
+                    <p class="lead mb-0 text-white-50">Expected Final Examination Marks</p>
+                </div>
+
+                <div class="p-4">
+                    <div class="row g-3 text-center">
+                        <div class="col-md-3 col-6 border-end">
+                            <span class="text-secondary small d-block">Expected Category</span>
+                            <span class="badge {{ badge }} px-3 py-2 mt-1 fs-6">{{ category }}</span>
+                        </div>
+                        <div class="col-md-3 col-6 border-end">
+                            <span class="text-secondary small d-block">Academic Level</span>
+                            <span class="fw-bold text-dark d-block mt-1">{{ level }}</span>
+                        </div>
+                        <div class="col-md-3 col-6 border-end">
+                            <span class="text-secondary small d-block">Predicted Grade</span>
+                            <span class="fw-bold text-primary d-block mt-1">{{ grade }}</span>
+                        </div>
+                        <div class="col-md-3 col-6">
+                            <span class="text-secondary small d-block">Risk Status</span>
+                            <span class="fw-bold d-block mt-1 text-{% if risk == 'Low' %}success{% elif risk == 'Moderate' %}warning{% else %}danger{% endif %}">
+                                {{ risk }} Risk
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4">
+                <!-- Inputs Breakdown -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-sliders"></i> Input Parameters Evaluated</h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span class="text-secondary">Attendance:</span>
+                                <span class="fw-semibold">{{ inputs.attendance }}%</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span class="text-secondary">Previous Exam Marks:</span>
+                                <span class="fw-semibold">{{ inputs.previous_marks }}%</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span class="text-secondary">Internal Assessment:</span>
+                                <span class="fw-semibold">{{ inputs.internal_marks }}%</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span class="text-secondary">Study Hours / Day:</span>
+                                <span class="fw-semibold">{{ inputs.study_hours }} hrs</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span class="text-secondary">Assignment Score:</span>
+                                <span class="fw-semibold">{{ inputs.assignment_score }}%</span>
+                            </li>
+                            <li class="list-group-item d-flex justify-content-between px-0">
+                                <span class="text-secondary">Previous Absences:</span>
+                                <span class="fw-semibold">{{ inputs.absences }} days</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Recommendations -->
+                <div class="col-md-6">
+                    <div class="card border-0 shadow-sm rounded-4 p-4 h-100 bg-white">
+                        <h5 class="fw-bold mb-3"><i class="bi bi-lightbulb text-warning"></i> Actionable Recommendations</h5>
+                        <ul class="list-unstyled d-flex flex-column gap-3 mb-0">
+                            {% for rec in recommendations %}
+                            <li class="d-flex align-items-start gap-2 small text-secondary">
+                                <i class="bi bi-arrow-right-circle-fill text-primary mt-1"></i>
+                                <span>{{ rec }}</span>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="{{ url_for('predict') }}" class="btn btn-outline-primary">
+                    <i class="bi bi-arrow-repeat"></i> Test Another Prediction
+                </a>
+                <a href="{{ url_for('student_dashboard') }}" class="btn btn-primary">
+                    <i class="bi bi-speedometer2"></i> Return to Dashboard
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

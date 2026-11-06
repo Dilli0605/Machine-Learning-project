@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Register | Student Performance Prediction{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row justify-content-center">
+        <div class="col-md-7 col-lg-6">
+            <div class="card border-0 shadow-sm rounded-4 p-4 bg-white">
+                <div class="text-center mb-4">
+                    <div class="text-primary fs-1 mb-2"><i class="bi bi-person-plus"></i></div>
+                    <h3 class="fw-bold">Student Registration</h3>
+                    <p class="text-muted small">Create an account to track your academic predictions</p>
+                </div>
+
+                <form method="POST" action="{{ url_for('register') }}">
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label fw-semibold text-secondary small">Full Name</label>
+                            <input type="text" name="name" class="form-control" placeholder="e.g. Rajesh Kumar" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">Email Address</label>
+                            <input type="email" name="email" class="form-control" placeholder="rajesh@college.edu" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">Roll Number / ID</label>
+                            <input type="text" name="roll_number" class="form-control" placeholder="CS2026-050" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">Department / Branch</label>
+                            <select name="department" class="form-select" required>
+                                <option value="" disabled selected>Select Department</option>
+                                <option value="Computer Science">Computer Science & Engg</option>
+                                <option value="Information Technology">Information Technology</option>
+                                <option value="Electronics & Comm">Electronics & Comm Engg</option>
+                                <option value="Mechanical Engg">Mechanical Engineering</option>
+                                <option value="Civil Engg">Civil Engineering</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold text-secondary small">Semester</label>
+                            <select name="semester" class="form-select" required>
+                                <option value="1">Semester 1</option>
+                                <option value="2">Semester 2</option>
+                                <option value="3">Semester 3</option>
+                                <option value="4">Semester 4</option>
+                                <option value="5">Semester 5</option>
+                                <option value="6" selected>Semester 6</option>
+                                <option value="7">Semester 7</option>
+                                <option value="8">Semester 8</option>
+                            </select>
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label fw-semibold text-secondary small">Password</label>
+                            <input type="password" name="password" class="form-control" placeholder="Choose a secure password" required minlength="4">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm mt-4">
+                        <i class="bi bi-check2-circle"></i> Complete Registration
+                    </button>
+                </form>
+
+                <div class="text-center mt-3">
+                    <span class="small text-muted">Already registered?</span>
+                    <a href="{{ url_for('login') }}" class="small fw-semibold text-primary ms-1">Sign in here</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

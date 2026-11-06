@@ -1,0 +1,1 @@
+SQLite database "student_system.db" is created here upon running "python database/init_db.py".

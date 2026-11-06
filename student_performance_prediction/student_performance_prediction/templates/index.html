@@ -1,0 +1,87 @@
+{% extends 'base.html' %}
+{% block title %}Home | Student Performance Prediction System{% endblock %}
+
+{% block content %}
+<div class="container">
+    <!-- Hero Banner -->
+    <div class="row align-items-center py-5 my-2">
+        <div class="col-lg-7">
+            <div class="pe-lg-4">
+                <span class="badge bg-primary-subtle text-primary border border-primary-subtle px-3 py-2 rounded-pill mb-3">
+                    <i class="bi bi-cpu-fill"></i> Random Forest Regression Model
+                </span>
+                <h1 class="display-5 fw-bold text-dark lh-tight mb-3">
+                    Student Academic Performance Prediction System
+                </h1>
+                <p class="lead text-secondary mb-4">
+                    An intelligent Machine Learning web application designed for educational institutions to accurately forecast final examination scores, identify at-risk students early, and provide personalized academic intervention recommendations.
+                </p>
+                <div class="d-flex flex-wrap gap-3">
+                    <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg px-4 shadow-sm">
+                        <i class="bi bi-box-arrow-in-right"></i> Access Portal
+                    </a>
+                    <a href="{{ url_for('register') }}" class="btn btn-outline-primary btn-lg px-4">
+                        <i class="bi bi-person-plus"></i> Student Sign Up
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 mt-4 mt-lg-0">
+            <div class="card border-0 shadow rounded-4 p-4 bg-white">
+                <h5 class="fw-bold text-primary mb-3"><i class="bi bi-activity"></i> Prediction Factors</h5>
+                <ul class="list-unstyled mb-0 d-flex flex-column gap-2 text-secondary">
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-check-circle-fill text-success"></i> Attendance percentage & attendance cliff warning
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-check-circle-fill text-success"></i> Previous semester examination marks
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-check-circle-fill text-success"></i> Continuous internal assessment scores
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-check-circle-fill text-success"></i> Daily study hours & time management
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-check-circle-fill text-success"></i> Assignment completion & submission score
+                    </li>
+                    <li class="d-flex align-items-center gap-2">
+                        <i class="bi bi-check-circle-fill text-success"></i> Total class absences impact penalty
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feature Pillars -->
+    <div class="row g-4 my-4">
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-white">
+                <div class="fs-1 text-primary mb-3"><i class="bi bi-person-badge"></i></div>
+                <h5 class="fw-bold">Student Module</h5>
+                <p class="text-secondary small">
+                    Register, log in, maintain your profile, input academic metrics, instantly preview predicted marks, expected grade category, and receive actionable tips to improve.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-white">
+                <div class="fs-1 text-primary mb-3"><i class="bi bi-shield-lock"></i></div>
+                <h5 class="fw-bold">Admin Module</h5>
+                <p class="text-secondary small">
+                    Secure dashboard to oversee all registered students, monitor class distribution, inspect global prediction logs, and identify vulnerable students needing tutoring.
+                </p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card h-100 border-0 shadow-sm rounded-3 p-4 bg-white">
+                <div class="fs-1 text-primary mb-3"><i class="bi bi-cpu"></i></div>
+                <h5 class="fw-bold">Scikit-Learn ML Engine</h5>
+                <p class="text-secondary small">
+                    Trained on multi-factor academic datasets with 80/20 train-test splitting. Evaluated using MAE, MSE, RMSE, and R² determination coefficient.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+/* Student Performance Prediction System - Academic Blue Theme */
+
+:root {
+    --primary-blue: #1e40af;
+    --accent-blue: #2563eb;
+    --light-bg: #f8fafc;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background-color: var(--light-bg);
+    color: #1e293b;
+}
+
+.navbar {
+    background-color: var(--primary-blue) !important;
+}
+
+.btn-primary {
+    background-color: var(--accent-blue);
+    border-color: var(--accent-blue);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-blue);
+    border-color: var(--primary-blue);
+}
+
+.card {
+    transition: transform 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.table th {
+    font-weight: 600;
+}
